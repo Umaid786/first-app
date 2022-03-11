@@ -1,0 +1,15 @@
+{
+  "main.css": "/first-app/static/css/main.e8681336.chunk.css",
+  "main.js": "/first-app/static/js/main.8ff5f050.chunk.js",
+  "main.js.map": "/first-app/static/js/main.8ff5f050.chunk.js.map",
+  "static/js/1.629ee088.chunk.js": "/first-app/static/js/1.629ee088.chunk.js",
+  "static/js/1.629ee088.chunk.js.map": "/first-app/static/js/1.629ee088.chunk.js.map",
+  "static/js/2.3a2e0e0b.chunk.js": "/first-app/static/js/2.3a2e0e0b.chunk.js",
+  "static/js/2.3a2e0e0b.chunk.js.map": "/first-app/static/js/2.3a2e0e0b.chunk.js.map",
+  "runtime~main.js": "/first-app/static/js/runtime~main.8fb928e1.js",
+  "runtime~main.js.map": "/first-app/static/js/runtime~main.8fb928e1.js.map",
+  "static/css/main.e8681336.chunk.css.map": "/first-app/static/css/main.e8681336.chunk.css.map",
+  "index.html": "/first-app/index.html",
+  "precache-manifest.ea4b91e3370020830e94002d8501e67a.js": "/first-app/precache-manifest.ea4b91e3370020830e94002d8501e67a.js",
+  "service-worker.js": "/first-app/service-worker.js"
+}

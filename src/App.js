@@ -3,14 +3,14 @@
 import Navbar from "./components/Navbar";
 import Alert from "./components/Alert";
 import TextForm from "./components/TextForm";
-// import About from "./components/About";
+import About from "./components/About";
 import React, {useState} from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Link
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  // Link
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState('light');
@@ -26,9 +26,10 @@ function App() {
     }, 2500);
   }
   const switchMode = ()=>{
+    // console.log(cls);
     if (mode === 'light') {
       setMode('dark')
-      document.body.style.backgroundColor = 'black';
+      document.body.style.backgroundColor = 'rgb(66 45 45)';
       showAlert("DarkMode has enabled","success");
       // setInterval(() => {
       //   document.title = 'Dark Mode';
@@ -46,16 +47,16 @@ function App() {
   
   return (
     <div>
-      {/* <Router> */}
+      <Router>
         {/* <Navbar title="News Blog" secondTitle="Live War Updates" mode={mode} switchMode={switchMode} Link={Link} /> */}
         <Navbar title="News Blog" secondTitle="Live War Updates" mode={mode} switchMode={switchMode} />
         <Alert alert={alert}/>
         <div className="container my-2">
-          {/* <Routes> */}
-              {/* <Route path="/about" element={<About/>}/> */}
-              {/* <Route path="/" element={<TextForm heading="Enter Text here" mode={mode} showAlertFunction={showAlert} />} /> */}
-              <TextForm heading="Enter Text here" mode={mode} showAlertFunction={showAlert} />
-          {/* </Routes> */}
+          <Routes>
+              <Route path="/about" element={<About mode={mode}/>}/>
+              <Route path="/" element={<TextForm heading="Enter Text here" mode={mode} showAlertFunction={showAlert} />} />
+              {/* <TextForm heading="Enter Text here" mode={mode} showAlertFunction={showAlert} /> */}
+          </Routes>
         </div>
 
 
@@ -76,7 +77,7 @@ function App() {
         </a>
       </header>
     </div> */}
-    {/* </Router> */}
+    </Router>
   </div>
   );
 }

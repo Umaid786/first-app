@@ -28,12 +28,13 @@ export default function TextForm(props) {
     const copyText = ()=>{
         console.log('copied '+ text);
         navigator.clipboard.writeText(text);
+        // document.getSelection().removeAllRanges();
         props.showAlertFunction("Text copied","success")
 
     }
     const removeExtraSpace = ()=>{
         let newText = text.split(/[ ]+/);
-        setText(newText.join(","));
+        setText(newText.join(" "));
         props.showAlertFunction("Extra spaces removed.","success")
     }
     
@@ -46,28 +47,34 @@ export default function TextForm(props) {
         <div className='container' style={{color: props.mode==='light' ? 'black':'white'}}>
             <h2>{props.heading}</h2>
             <div className="mb-3">
-                <textarea className="form-control" style={{backgroundColor : props.mode==='light' ? 'white':'grey', color: props.mode==='light' ? 'black':'white', }} value={text} onChange={handleonchange} id="textArea" rows="4"></textarea>
+                <textarea className="form-control" style={{backgroundColor : props.mode==='light' ? 'white':'#255f44', color: props.mode==='light' ? 'black':'white', }} value={text} onChange={handleonchange} id="textArea" rows="4"></textarea>
             </div>
             <div className="container">
-                <button className='btn btn-danger' onClick={clearText}>Clear Text</button>
-                <button className='btn btn-success mx-3' onClick={toUpperCase}>To Uppercase</button>
-                <button className='btn btn-success mx-2' onClick={toLowerCase}>To Lowercase</button>
-                <button className='btn btn-secondary mx-2' onClick={copyText}>Copy Text</button>
-                <button className='btn btn-primary mx-2' onClick={removeExtraSpace}>Remove Extra Spaces</button>
+                <button disabled={text.length ===0} className='btn btn-danger' onClick={clearText}>Clear Text</button>
+                <button disabled={text.length ===0} className='btn btn-success mx-3 my-1' onClick={toUpperCase}>To Uppercase</button>
+                <button disabled={text.length ===0} className='btn btn-success mx-2 my-1' onClick={toLowerCase}>To Lowercase</button>
+                <button disabled={text.length ===0} className='btn btn-secondary mx-2 my-1' onClick={copyText}>Copy Text</button>
+                <button disabled={text.length ===0} className='btn btn-primary mx-2 my-1' onClick={removeExtraSpace}>Remove Extra Spaces</button>
             </div>
             {/* <div className="container my-5">
             <label htmlFor="colorPicker" className="form-label">Color picker</label>
             <input type="color" className="form-control form-control-color" id="colorPicker" value="#563d7c" onChange={colorChange} title="Choose your color"/>
             </div> */}
         </div>
-        <div className="container my-3" style={{color: props.mode === 'light' ? 'black':'white'}}>
+        <div className="container my-2" style={{color: props.mode === 'light' ? 'black':'white'}}>
             <h4>Text Summary :</h4>
-            <ul className="d-inline-flex">
-                <li className="alert alert-primary mx-4" role="alert"><b>Total words : </b>{(text.split(' ').length) -1 }</li>  
-                <li className="alert alert-secondary mx-4" ><b>Total characters : </b>{text.length}</li>
-                <li className="alert alert-success mx-4"><b>Time to read : </b>{(0.008 * (text.split(' ').length -1 )).toFixed(3)} minutes</li>  
-                <li className="alert alert-danger mx-4"><b>Time to read : </b>{(0.48 * (text.split(' ').length -1 )).toFixed(1)} seconds</li>
+            <ul className="list-group" style={{flexDirection:'row',flexWrap:'wrap'}}>
+                <li className="list-group-item list-group-item-primary mx-1 my-1" style={{width:'fit-content'}}><b>Total words : </b>{(text.split(' ').filter((element)=>{ return element.length !== 0 }).length) }</li>  
+                <li className="list-group-item list-group-item-secondary mx-1 my-1" style={{width:'fit-content'}}><b>Total characters : </b>{text.length}</li>
+                <li className="list-group-item list-group-item-success mx-1 my-1" style={{width:'fit-content'}}><b>Time to read : </b>{(0.008 * (text.split(' ').filter((element)=>{return element.length !==0}).length)).toFixed(3)} minutes</li>  
+                <li className="list-group-item list-group-item-danger mx-1 my-1" style={{width:'fit-content'}}><b>Time to read : </b>{(0.48 * (text.split(' ').filter((element)=>{return element.length !==0}).length )).toFixed(1)} seconds</li>
             </ul>
+            {/* <ul className="d-inline-flex">
+                <li className="alert alert-primary mx-4"><b>Total words : </b>{(text.split(' ').filter((element)=>{ return element.length !== 0 }).length) }</li>  
+                <li className="alert alert-secondary mx-4" ><b>Total characters : </b>{text.length}</li>
+                <li className="alert alert-success mx-4"><b>Time to read : </b>{(0.008 * (text.split(' ').filter((element)=>{return element.length !==0}).length)).toFixed(3)} minutes</li>  
+                <li className="alert alert-danger mx-4"><b>Time to read : </b>{(0.48 * (text.split(' ').filter((element)=>{return element.length !==0}).length )).toFixed(1)} seconds</li>
+            </ul> */}
         </div>
         <div className="container my-3" style={{color : props.mode==='light'?'black':'white'}}>
         <h5>Preview text for read : </h5>
